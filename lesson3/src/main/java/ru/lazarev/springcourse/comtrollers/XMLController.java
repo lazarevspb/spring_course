@@ -3,10 +3,10 @@ package ru.lazarev.springcourse.comtrollers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.lazarev.springcourse.product_application.Product;
+import ru.lazarev.springcourse.productapplication.Product;
 
 import javax.xml.bind.JAXB;
-import java.io.*;
+import java.io.StringWriter;
 
 @Controller
 public class XMLController {

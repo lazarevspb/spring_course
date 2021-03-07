@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.lazarev.springcourse.product_application.Product;
+import ru.lazarev.springcourse.productapplication.Product;
 
 import java.io.IOException;
 
@@ -18,8 +18,4 @@ public class JSONController {
         model.addAttribute("receivedText", jsonString);
         return "json";
     }
-
-
-
-
 }

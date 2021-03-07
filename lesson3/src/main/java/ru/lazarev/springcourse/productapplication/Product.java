@@ -1,14 +1,9 @@
-package ru.lazarev.springcourse.product_application;
+package ru.lazarev.springcourse.productapplication;
 
-
-/*1. Есть класс Product (id, название, цена).
-Товары хранятся в бине ProductRepository,
-в виде List<Product>, при старте в него нужно добавить 5 любых товаров.*/
 public class Product {
     private int id;
     private String name;
     private int price;
-
 
     public Product() {
     }

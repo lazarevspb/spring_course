@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>Add products</title>
+    <title>Add new product</title>
 </head>
 
 <body>
-<h1>Add products</h1>
-<!--<p th:each="author : ${authors}" th:text="${author.firstName}" />-->
+<form th:method="POST" form th:action="@{/add/form}" th:object="${product}">
+    id: <input type="text" th:field="*{id}"/>
+    <br>
+    name:  <input type="text" th:field="*{name}"/>
+    <br>
+    price: <input type="text" th:field="*{price}"/>
+    <br>
+    <button type="submit">Save</button>
+    <br><a href="/all">view all products</a>
+</form>
 </body>
 </html>
+
