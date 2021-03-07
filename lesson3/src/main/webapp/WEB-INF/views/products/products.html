@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>All products</title>
 </head>
-
 <body>
 <h1>All products</h1>
-<!--<p th:each="author : ${authors}" th:text="${author.firstName}" />-->
+<h4 th:each="product : ${product}" th:text="${product.getName}"></h4>
 </body>
 </html>

@@ -16,7 +16,6 @@ public class XMLController {
         StringWriter sw = new StringWriter();
         JAXB.marshal(product, sw);
         String xmlString = sw.toString();
-        System.out.println(xmlString);
         model.addAttribute("xmlString", xmlString);
         return "xml";
     }
