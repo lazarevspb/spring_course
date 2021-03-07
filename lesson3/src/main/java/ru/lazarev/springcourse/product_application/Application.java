@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Homework for lesson #2
+ * Homework for lesson #3
  *
  * @author Valeriy Lazarev
  * @since 05.03.2021

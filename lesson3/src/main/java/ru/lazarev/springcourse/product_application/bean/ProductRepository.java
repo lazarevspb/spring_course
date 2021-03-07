@@ -32,7 +32,6 @@ public class ProductRepository {
 
     @Override
     public String toString() {
-
         return list.stream()
                 .map(Product::getName)
                 .collect(Collectors.joining("::", "the_collection_contains: [", "]"));
