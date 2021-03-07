@@ -8,11 +8,8 @@ import ru.lazarev.springcourse.product_application.Product;
 
 import java.io.IOException;
 
-
-
-
 @Controller
-public class MyController {
+public class JSONController {
     @GetMapping("/json/get")
     public String getJson(Model model) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -22,15 +19,7 @@ public class MyController {
         return "json";
     }
 
-    @GetMapping("xml/get")
-    public String getXML() {
-        return "xml";
-    }
 
-    @GetMapping("/home")
-    public String homePage() {
-        return "my/home";
-    }
 
 
 }
