@@ -14,7 +14,7 @@ import java.io.StringWriter;
 @RequestMapping("/xml")
 public class XMLController {
     @GetMapping(value = "get", produces = MediaType.APPLICATION_XML_VALUE)
-    public String getXML(Model model){
+    public String getXML(Model model) {
         Product product = new Product(1, "product_title", 10);
         StringWriter sw = new StringWriter();
         JAXB.marshal(product, sw);

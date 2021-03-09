@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class ProductRepository {
-    private List<Product> list = new ArrayList<>();
+    private final List<Product> list = new ArrayList<>();
 
     public List<Product> getList() {
         return list;

@@ -10,7 +10,7 @@ public class MyDispatcherServletInitializer extends AbstractAnnotationConfigDisp
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[] {SpringConfig.class};
+        return new Class[]{SpringConfig.class};
     }
 
     @Override

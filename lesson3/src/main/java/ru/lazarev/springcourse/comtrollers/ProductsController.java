@@ -14,14 +14,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/products")
 public class ProductsController {
-
     private final ProductRepository repository;
 
     @GetMapping("/")
-    public String getProductPage(){
+    public String getProductPage() {
         return "products/main";
     }
-
 
     @Autowired
     public ProductsController(ProductRepository repository) {
@@ -35,27 +33,15 @@ public class ProductsController {
         return "products/all";
     }
 
-    /**
-     * Метод getForm(...) - Создаёт пустой объект-сущность, добавляет его в объект модели и возвращает имя представления,
-     * в котором содержится данная форма. Тогда DispatcherServlet добавит объект не по имени переменной EL,
-     * а по наименованию, указанному в атрибуте th:object тега form. Данный механизм предоставляет доступ
-     * к атрибутам объекта с возможностью их изменения.
-     */
     @GetMapping("/add")
     public String getForm(Model uiModel) {
         uiModel.addAttribute("product", new Product());
         return "products/add";
     }
 
-    /**
-     * Метод create(...) вызывается после того, как клиент заполнил все поля формы и отправил ее
-     * POST-запроcом. В метод create(...) DispatcherServlet передает объект, полям которого присвоены
-     */
     @PostMapping("products/form")
     public String create(Product product) {
         repository.addProduct(product);
         return "products/complete";
     }
-
-
 }
