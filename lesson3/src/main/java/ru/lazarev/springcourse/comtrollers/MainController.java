@@ -9,4 +9,10 @@ public class MainController {
     public String homePage() {
         return "home/main";
     }
+
+    @GetMapping("/data")
+    public String dataPage() {
+        return "data/main";
+    }
+
 }

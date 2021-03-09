@@ -6,7 +6,8 @@
 </head>
 
 <body>
-<form th:method="POST" form th:action="@{/add/form}" th:object="${product}">
+<br><a href="/">go to main page</a>
+<form th:method="POST" form th:action="@{products/form}" th:object="${product}">
     id: <input type="text" th:field="*{id}"/>
     <br>
     name:  <input type="text" th:field="*{name}"/>
@@ -14,7 +15,7 @@
     price: <input type="text" th:field="*{price}"/>
     <br>
     <button type="submit">Save</button>
-    <br><a href="/all">view all products</a>
+    <br><a href="/products/all">view all products</a>
 </form>
 </body>
 </html>

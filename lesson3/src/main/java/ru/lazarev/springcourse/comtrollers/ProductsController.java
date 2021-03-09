@@ -5,16 +5,34 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ru.lazarev.springcourse.productapplication.Product;
 import ru.lazarev.springcourse.productapplication.ProductRepository;
 
+import java.util.List;
+
 @Controller
-public class AddProductController {
+@RequestMapping("/products")
+public class ProductsController {
+
     private final ProductRepository repository;
 
+    @GetMapping("/")
+    public String getProductPage(){
+        return "products/main";
+    }
+
+
     @Autowired
-    public AddProductController(ProductRepository repository) {
+    public ProductsController(ProductRepository repository) {
         this.repository = repository;
+    }
+
+    @GetMapping("/all")
+    public String allPage(Model model) {
+        List<Product> product = repository.getList();
+        model.addAttribute("product", product);
+        return "products/all";
     }
 
     /**
@@ -26,16 +44,18 @@ public class AddProductController {
     @GetMapping("/add")
     public String getForm(Model uiModel) {
         uiModel.addAttribute("product", new Product());
-        return "products/add_products";
+        return "products/add";
     }
 
     /**
      * Метод create(...) вызывается после того, как клиент заполнил все поля формы и отправил ее
      * POST-запроcом. В метод create(...) DispatcherServlet передает объект, полям которого присвоены
      */
-    @PostMapping("/add/form")
+    @PostMapping("products/form")
     public String create(Product product) {
         repository.addProduct(product);
-        return "products/add_products";
+        return "products/complete";
     }
+
+
 }
