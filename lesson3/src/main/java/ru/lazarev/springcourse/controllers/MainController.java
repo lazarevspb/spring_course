@@ -1,4 +1,4 @@
-package ru.lazarev.springcourse.comtrollers;
+package ru.lazarev.springcourse.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

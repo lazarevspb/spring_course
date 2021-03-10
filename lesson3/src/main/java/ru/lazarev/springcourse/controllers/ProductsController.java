@@ -1,4 +1,4 @@
-package ru.lazarev.springcourse.comtrollers;
+package ru.lazarev.springcourse.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

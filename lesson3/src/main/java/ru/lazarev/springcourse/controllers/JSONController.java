@@ -1,4 +1,4 @@
-package ru.lazarev.springcourse.comtrollers;
+package ru.lazarev.springcourse.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;
