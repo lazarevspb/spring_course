@@ -37,3 +37,10 @@ build/
 
 ### VS Code ###
 .vscode/
+/spring-boot-project.zip
+/lesson3.rar
+/lesson2/lesson2.uml
+/lesson4/.mvn/wrapper/
+/lesson4/.mvn/
+*.uml
+
