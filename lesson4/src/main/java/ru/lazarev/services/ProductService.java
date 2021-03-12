@@ -22,7 +22,11 @@ public class ProductService {
     }
 
     public Product saveOrUpdate(Product product) {
-        return productRepository.saveOrUpdateProduct();
+        return productRepository.saveOrUpdateProduct(product);
+    }
+
+    public void deleteById(Long id) {
+        productRepository.deleteById(id);
     }
 
 }
