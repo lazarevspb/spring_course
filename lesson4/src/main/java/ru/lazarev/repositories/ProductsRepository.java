@@ -21,9 +21,10 @@ public class ProductsRepository {
     public void init() {
         int minPrice = 0;
         int maxPrice = 1000;
+        int productCount = 5;
 
         this.products = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < productCount; i++) {
             products.add(new Product(
                     ++PRODUCTS_COUNT,
                     "Product_" + PRODUCTS_COUNT,
@@ -34,7 +35,7 @@ public class ProductsRepository {
 
     public Product saveOrUpdateProduct(Product product) {
 
-        if (product.getId() != 0) {
+        if (product.getId() != null) {
             for (int i = 0; i < products.size(); i++) {
                 if (products.get(i).getId().equals(product.getId())) {
                     products.set(i, product);
@@ -42,7 +43,6 @@ public class ProductsRepository {
                 }
             }
         }
-
         Long newId = products.stream().mapToLong(Product::getId).max().orElseGet(() -> 0L) + 1L;
         product.setId(newId);
         this.products.add(product);

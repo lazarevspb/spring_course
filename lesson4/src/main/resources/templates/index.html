@@ -12,6 +12,9 @@
 <body>
 
 <div class="container">
+    <br>
+    <a class="btn btn-primary" th:href="@{'/products/new'}">Добавить продукт</a>
+    <br>
     <h1>Фильтр</h1>
     <form method="get" th:action="@{'/products'}">
         <input class="form-control" th:value="${param.min_price != null ? param.min_price : ''}" type="number" placeholder="Минимальная цена" name="min_price"/>
@@ -35,7 +38,9 @@
             <td th:text="${p.price}"/>
             <td>
                 <a class="btn btn-danger" th:href="@{'/products/delete/' + ${p.id}}">Удалить</a>
-                <a class="btn btn-danger" th:href="@{'/products/' + ${p.id}}">Перейти</a>
+                <a class="btn btn-danger" th:href="@{'/products/' + ${p.id}}">Посмотреть</a>
+                <a class="btn btn-danger" th:href="@{'/products/' + ${p.id}}">json</a>
+                <a class="btn btn-danger" th:href="@{'/products/' + ${p.id}}">xml</a>
             </td>
         </tr>
         </tbody>

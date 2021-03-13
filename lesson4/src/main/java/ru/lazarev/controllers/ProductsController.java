@@ -2,16 +2,12 @@ package ru.lazarev.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.lazarev.exception.ResourceNotFoundException;
 import ru.lazarev.model.Product;
 import ru.lazarev.services.ProductsService;
 
 import java.util.Optional;
-import java.util.Properties;
 
 @Controller
 @RequestMapping("/products")
@@ -29,7 +25,7 @@ public class ProductsController {
                           @RequestParam(required = false, name = "max_price") Integer maxPrice
     ) {
         model.addAttribute("products", productsService.findAll(minPrice, maxPrice));
-        return "products";
+        return "index";
 
     }
 
@@ -41,9 +37,22 @@ public class ProductsController {
 
     @GetMapping("/{id}")
     public String showProductById(Model model, @PathVariable Long id) {
-  Optional<Product> product = productsService.findById(id);
+        Optional<Product> product = productsService.findById(id);
         model.addAttribute("product", productsService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Продукт не найден")));
         return "product";
+    }
+
+    @GetMapping("/new")
+    public String newProduct(Model model) {
+        model.addAttribute("product", new Product());
+        return "new";
+    }
+
+    @PostMapping()
+    public String createProduct(@ModelAttribute("product") Product product) {
+        productsService.saveOrUpdate(product);
+        System.out.println(productsService.toString());
+        return "redirect:/products";
     }
 
 }
