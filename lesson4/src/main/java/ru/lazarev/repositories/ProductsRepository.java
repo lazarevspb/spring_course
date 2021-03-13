@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 @Component
 public class ProductsRepository {
     private List<Product> products;
+    private static Long PRODUCTS_COUNT = 0L;
 
     public List<Product> findAll() {
         return Collections.unmodifiableList(products);
@@ -18,13 +19,16 @@ public class ProductsRepository {
 
     @PostConstruct
     public void init() {
-        this.products = new ArrayList<>(Arrays.asList(
-                new Product(1L, "p1", 10),
-                new Product(2L, "p2", 20),
-                new Product(3L, "p3", 30),
-                new Product(4L, "p4", 40),
-                new Product(5L, "p5", 50)
-        ));
+        int minPrice = 0;
+        int maxPrice = 1000;
+
+        this.products = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            products.add(new Product(
+                    ++PRODUCTS_COUNT,
+                    "Product_" + PRODUCTS_COUNT,
+                    (int) (Math.random() * ++maxPrice) + minPrice));
+        }
 
     }
 

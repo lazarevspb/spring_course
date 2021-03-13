@@ -6,7 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.lazarev.exception.ResourceNotFoundException;
+import ru.lazarev.model.Product;
 import ru.lazarev.services.ProductsService;
+
+import java.util.Optional;
+import java.util.Properties;
 
 @Controller
 @RequestMapping("/products")
@@ -34,5 +39,11 @@ public class ProductsController {
         return "redirect:/products";
     }
 
+    @GetMapping("/{id}")
+    public String showProductById(Model model, @PathVariable Long id) {
+  Optional<Product> product = productsService.findById(id);
+        model.addAttribute("product", productsService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Продукт не найден")));
+        return "product";
+    }
 
 }

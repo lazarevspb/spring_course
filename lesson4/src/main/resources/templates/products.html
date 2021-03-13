@@ -35,6 +35,7 @@
             <td th:text="${p.price}"/>
             <td>
                 <a class="btn btn-danger" th:href="@{'/products/delete/' + ${p.id}}">Удалить</a>
+                <a class="btn btn-danger" th:href="@{'/products/' + ${p.id}}">Перейти</a>
             </td>
         </tr>
         </tbody>
