@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<br><a href="market/products">go to main page</a>
+<br><a href="/market/products/">go to main page</a>
 <form th:method="POST" form th:action="@{/products}" th:object="${product}">
     <label for="Name">Enter name:
     <input type="text" th:field="*{name}" id="name"/>

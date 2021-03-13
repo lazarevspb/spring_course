@@ -39,8 +39,8 @@
             <td>
                 <a class="btn btn-danger" th:href="@{'/products/delete/' + ${p.id}}">Удалить</a>
                 <a class="btn btn-danger" th:href="@{'/products/' + ${p.id}}">Посмотреть</a>
-                <a class="btn btn-danger" th:href="@{'/products/' + ${p.id}}">json</a>
-                <a class="btn btn-danger" th:href="@{'/products/' + ${p.id}}">xml</a>
+                <a class="btn btn-danger" th:href="@{'/products/get_json/' + ${p.id}}">json</a>
+                <a class="btn btn-danger" th:href="@{'/products/get_xml/' + ${p.id}}">xml</a>
             </td>
         </tr>
         </tbody>
