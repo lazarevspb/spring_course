@@ -22,7 +22,7 @@ public class ProductsRepository {
     @PostConstruct
     public void init() {
         int minPrice = 0;
-        int maxPrice = 1000;
+        int maxPrice = 1_000_000;
         int productCount = 5000;
 
         this.products = new ArrayList<>();
