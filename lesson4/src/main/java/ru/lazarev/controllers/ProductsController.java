@@ -16,7 +16,6 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/products")
-//@RequiredArgsConstructor;
 public class ProductsController {
     private final ProductsService productsService;
 
@@ -31,7 +30,6 @@ public class ProductsController {
     ) {
         model.addAttribute("products", productsService.findAll(minPrice, maxPrice));
         return "index";
-
     }
 
     @GetMapping("/delete/{id}")

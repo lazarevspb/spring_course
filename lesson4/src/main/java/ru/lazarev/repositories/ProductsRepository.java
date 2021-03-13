@@ -1,11 +1,13 @@
 package ru.lazarev.repositories;
 
 import org.springframework.stereotype.Component;
-import ru.lazarev.exception.ResourceNotFoundException;
 import ru.lazarev.model.Product;
 
 import javax.annotation.PostConstruct;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -21,7 +23,7 @@ public class ProductsRepository {
     public void init() {
         int minPrice = 0;
         int maxPrice = 1000;
-        int productCount = 5;
+        int productCount = 5000;
 
         this.products = new ArrayList<>();
         for (int i = 0; i < productCount; i++) {
@@ -58,7 +60,6 @@ public class ProductsRepository {
     public void deleteById(Long id) {
         products.removeIf(product -> product.getId().equals(id));
     }
-
 
     @Override
     public String toString() {
