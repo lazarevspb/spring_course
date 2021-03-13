@@ -14,8 +14,8 @@
 <div class="container">
     <h1>Фильтр</h1>
     <form method="get" th:action="@{'/products'}">
-        <input class="form-control" th:value="${param.min_score != null ? param.min_score : ''}" type="number" placeholder="Минимальный балл" name="min_score"/>
-        <input class="form-control" th:value="${param.max_score != null ? param.max_score : ''}" type="number" placeholder="Максимальный балл" name="max_score"/>
+        <input class="form-control" th:value="${param.min_price != null ? param.min_price : ''}" type="number" placeholder="Минимальная цена" name="min_price"/>
+        <input class="form-control" th:value="${param.max_price != null ? param.max_price : ''}" type="number" placeholder="Максимальная цена" name="max_price"/>
         <button class="btn btn-primary" type="submit">Найти</button>
     </form>
     <h1>Список продуктов</h1>
