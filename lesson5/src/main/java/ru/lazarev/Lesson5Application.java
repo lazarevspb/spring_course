@@ -1,14 +1,9 @@
 package ru.lazarev;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import org.hibernate.cfg.Configuration;
 
-import org.springframework.boot.web.embedded.jetty.JettyServletWebServerFactory;
-import org.springframework.boot.web.server.ErrorPage;
-import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpStatus;
+import javax.persistence.EntityManagerFactory;
 
 /**
  * Homework for Spring course, lesson #5
@@ -16,23 +11,12 @@ import org.springframework.http.HttpStatus;
  * @author Valeriy Lazarev
  * @since 13.03.2021
  */
-@SpringBootApplication
 public class Lesson5Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(Lesson5Application.class, args);
-    }
+        EntityManagerFactory factory = new Configuration()
+                .configure("hibernate.xml")
+                .buildSessionFactory();
 
-    /*
-    https://howtodoinjava.com/spring-boot/configure-jetty-server/
-     */
-    @Bean
-    public ConfigurableServletWebServerFactory webServerFactory()
-    {
-        JettyServletWebServerFactory factory = new JettyServletWebServerFactory();
-        factory.setPort(8181);
-        factory.setContextPath("/market");
-        factory.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/notfound.html"));
-        return factory;
     }
 }
