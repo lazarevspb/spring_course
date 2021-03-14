@@ -31,7 +31,7 @@ public class ProductDao {
 
     public List<Product> findAll(Session session) {
         session.beginTransaction();
-        List<Product> list = session.createQuery("SELECT p FROM Product p", Product.class).getResultList();
+        List<Product> list = session.createQuery("FROM Product", Product.class).getResultList();
         session.getTransaction().commit();
         return list;
     }
