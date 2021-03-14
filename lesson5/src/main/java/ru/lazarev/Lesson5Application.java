@@ -20,7 +20,6 @@ public class Lesson5Application {
 
     public static void main(String[] args) {
         ProductDao dao = new ProductDao();
-        Long maxId = null;
         try {
             init();
             session = factory.getCurrentSession();
@@ -29,9 +28,6 @@ public class Lesson5Application {
 //            System.out.println(dao.findById(session, 2L));
 //            dao.deleteById(session, 1L);
             dao.findAll(session).forEach(System.out::println);
-            ;
-
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
