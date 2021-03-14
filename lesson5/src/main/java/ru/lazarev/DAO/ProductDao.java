@@ -12,7 +12,6 @@ public class ProductDao {
         Query query = session.createQuery("SELECT p FROM Product p WHERE p.id = :id");
         query.setParameter("id", id);
         Product product = (Product) query.getSingleResult();
-//        Product product = session.get(Product.class, id);
         session.getTransaction().commit();
         return product;
     }
@@ -32,7 +31,7 @@ public class ProductDao {
 
     public List<Product> findAll(Session session) {
         session.beginTransaction();
-        List<Product> list = session.createNamedQuery("Product.finAll", Product.class).getResultList();
+        List<Product> list = session.createQuery("SELECT p FROM Product p", Product.class).getResultList();
         session.getTransaction().commit();
         return list;
     }
