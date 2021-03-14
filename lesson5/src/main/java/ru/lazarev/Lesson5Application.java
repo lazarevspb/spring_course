@@ -1,12 +1,12 @@
 package ru.lazarev;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import ru.lazarev.DAO.ProductDao;
 import ru.lazarev.entity.Product;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
 
 /**
  * Homework for Spring course, lesson #5
@@ -15,26 +15,41 @@ import javax.persistence.Query;
  * @since 13.03.2021
  */
 public class Lesson5Application {
-
-    private static EntityManager em;
+    private static SessionFactory factory;
+    private static Session session;
 
     public static void main(String[] args) {
-        EntityManagerFactory factory = new Configuration()
+        ProductDao dao = new ProductDao();
+        Long maxId = null;
+        try {
+            init();
+            session = factory.getCurrentSession();
+//            Product p = generateProduct();
+//            dao.saveOrUpdate(session, p);
+//            System.out.println(dao.findById(session, 2L));
+//            dao.deleteById(session, 1L);
+            dao.findAll(session).forEach(System.out::println);
+            ;
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            shutdown();
+        }
+    }
+
+    public static void shutdown() {
+        if (session != null) {
+            session.close();
+        }
+        factory.close();
+    }
+
+    private static void init() {
+        factory = new Configuration()
                 .configure("hibernate.xml")
                 .buildSessionFactory();
-
-
-
-        EntityManager em = factory.createEntityManager();
-//        newProduct(em);
-
-//        setProduct(em);
-
-//        findProduct(em);
-
-        em.createNamedQuery("Product.finAll", Product.class).getResultList().forEach(System.out::println);
-
-
     }
 
     private static void newProduct(EntityManager em) {
@@ -46,32 +61,5 @@ public class Lesson5Application {
             em.persist(new Product("Product" + i, (int) (Math.random() * ++maxPrice) + minPrice));
             em.getTransaction().commit();
         }
-    }
-
-    private static void setProduct(EntityManager em) {
-        Lesson5Application.em = em;
-        Product product1 = em.find(Product.class, 6L);
-        em.getTransaction().begin();
-        product1.setPrice(000);
-        em.merge(product1);
-        em.getTransaction().commit();
-        System.out.println(product1);
-    }
-
-    private static void findProduct(EntityManager em) {
-        Query query = em.createQuery("SELECT p FROM Product p WHERE p.name = :name");
-        query.setParameter("name", "Product1");
-
-
-        Product product1;
-
-
-        try {
-            product1 = (Product) query.getSingleResult();
-            System.out.println(product1.toString());
-        } catch (NoResultException e) {
-            System.out.println("Product not found");
-        }
-
     }
 }
