@@ -1,4 +1,4 @@
-package ru.lazarev.hibernate;
+package ru.lazarev.hibernate.entity;
 
 
 import javax.persistence.*;
@@ -11,8 +11,8 @@ public class Person {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "title")
-    private String title;
+    @Column(name = "name")
+    private String name;
 
     public Person() {
     }
@@ -25,11 +25,11 @@ public class Person {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String title) {
+        this.name = title;
     }
 }
