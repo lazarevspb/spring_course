@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>All products</title>
+</head>
+<body>
+<br><a href="/">go to main page</a>
+<h1>All products</h1>
+<h4 th:each="product : ${product}" th:text="${product.getName}"></h4>
+</body>
+</html>
