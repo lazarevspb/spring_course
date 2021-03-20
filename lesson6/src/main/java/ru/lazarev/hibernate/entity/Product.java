@@ -2,11 +2,10 @@ package ru.lazarev.hibernate.entity;
 
 
 import javax.persistence.*;
-import java.util.Collections;
-import java.util.List;
+
 
 @Entity
-@Table(name = "products")
+@Table(name = "products", schema = "hibernate")
 public class Product {
 
     @Id
@@ -20,7 +19,7 @@ public class Product {
     @Column(name = "cost")
     private long cost;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "orders_id")
     private Order order;
 
@@ -58,5 +57,11 @@ public class Product {
         this.cost = cost;
     }
 
+    public Product() {
+    }
 
+    @Override
+    public String toString() {
+        return String.format("id: %s, name: %s, cost: %s, orders_id: %s", id, name, cost, order.getId());
+    }
 }

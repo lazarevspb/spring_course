@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "customers", schema = "hibernate")
 public class Customer {
 
   @Id
@@ -16,8 +16,11 @@ public class Customer {
   @Column(name = "name")
   private String name;
 
-//  @Column(name = "orders_id")
-  @OneToMany(mappedBy = "product")
+  public Customer() {
+  }
+
+  //  @Column(name = "orders_id")
+  @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
   private List<Order> orders;
 
   public List<Order> getOrders() {
@@ -45,6 +48,10 @@ public class Customer {
     this.name = name;
   }
 
+  @Override
+  public String toString() {
+    return String.format("id: %s, name: %s, orders_id: %s", id, name, orders);
+  }
 
 
 }
