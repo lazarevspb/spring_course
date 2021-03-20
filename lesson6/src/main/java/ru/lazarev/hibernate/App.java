@@ -1,48 +1,20 @@
 package ru.lazarev.hibernate;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.query.NativeQuery;
 import ru.lazarev.hibernate.emf.EMF;
-import ru.lazarev.hibernate.entity.Customer;
-import ru.lazarev.hibernate.entity.Order;
-import ru.lazarev.hibernate.entity.Product;
-
-import javax.persistence.EntityManager;
-import java.util.List;
+import ru.lazarev.hibernate.service.Service;
 
 public class App {
-    public static void main(String[] args) {
-//        Configuration cfg = new Configuration()
-//                .addAnnotatedClass(Customer.class);
-        SessionFactory factory = new Configuration()
-                .configure("hibernate.xml")
-                .buildSessionFactory();
-        Session session = null;
+    private static final Session session = EMF.getCurrentSession();
+    private static final Service service = new Service();
 
+    public static void main(String[] args) {
 
         try {
-            session = factory.getCurrentSession();
-            session.beginTransaction();
-//            Product p = session.find(Product.class, 2L);
-//            Order p = session.find(Order.class, 2L);
-            Customer p = session.find(Customer.class, 2L);
-//            NativeQuery p = session.createNativeQuery("select * from products");
-//            List<Product> items = session.createQuery("from Product ").getResultList();
-
-//            System.out.println(items);
-//            Order p = session.find(Order.class, 2L);
-//            Customer p = session.find(Customer.class, 2L);
-//            p.stream().forEach(System.out::println);
-            System.out.println(p);
-
-            session.getTransaction().commit();
+            System.out.println(service.orderInfo(2L));
+            System.out.println(service.customerInfo(2L));
         } finally {
             session.close();
-
         }
-
     }
-
 }

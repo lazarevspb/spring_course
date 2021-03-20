@@ -1,4 +1,4 @@
-package ru.lazarev.DAO;
+package ru.lazarev.dao;
 
 import org.hibernate.Session;
 import ru.lazarev.entity.Product;

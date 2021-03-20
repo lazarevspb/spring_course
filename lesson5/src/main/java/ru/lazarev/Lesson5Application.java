@@ -3,7 +3,7 @@ package ru.lazarev;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import ru.lazarev.DAO.ProductDao;
+import ru.lazarev.dao.ProductDao;
 import ru.lazarev.entity.Product;
 
 import javax.persistence.EntityManager;

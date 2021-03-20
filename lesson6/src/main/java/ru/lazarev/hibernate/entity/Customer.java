@@ -19,8 +19,7 @@ public class Customer {
   public Customer() {
   }
 
-  //  @Column(name = "orders_id")
-  @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
   private List<Order> orders;
 
   public List<Order> getOrders() {
