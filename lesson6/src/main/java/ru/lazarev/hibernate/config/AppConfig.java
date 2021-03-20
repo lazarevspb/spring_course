@@ -1,4 +1,4 @@
-package ru.lazarev.hibernate;
+package ru.lazarev.hibernate.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -21,12 +21,10 @@ public class AppConfig {
         return new ProductDAO();
     }
 
-
     @Bean(name = "orderDAO")
     public OrderDAO orderDAO() {
         return new OrderDAO() ;
     }
-
 
     @Bean(name = "service")
     public Service service() {

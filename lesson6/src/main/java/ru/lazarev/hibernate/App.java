@@ -2,6 +2,7 @@ package ru.lazarev.hibernate;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ru.lazarev.hibernate.config.AppConfig;
 import ru.lazarev.hibernate.service.Service;
 
 /**
@@ -12,7 +13,7 @@ import ru.lazarev.hibernate.service.Service;
  */
 public class App {
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(ru.lazarev.hibernate.config.AppConfig.class);
         Service service = context.getBean("service", Service.class);
         System.out.println(service.orderInfo(2L));
         System.out.println(service.customerInfo(2L));
