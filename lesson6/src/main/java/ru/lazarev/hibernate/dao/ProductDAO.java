@@ -4,7 +4,6 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 import ru.lazarev.hibernate.entity.Product;
 
-
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
