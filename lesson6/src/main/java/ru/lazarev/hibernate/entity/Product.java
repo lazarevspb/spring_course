@@ -46,7 +46,6 @@ public class Product {
         this.name = name;
     }
 
-
     public long getCost() {
         return cost;
     }

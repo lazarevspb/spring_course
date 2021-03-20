@@ -8,7 +8,6 @@ INSERT INTO hibernate.customers(name) VALUES
 ('customers_2'),
 ('customers_3');
 
-
 INSERT INTO hibernate.orders(product_id, customer_id, cost) VALUES
 (1, 1, 10),
 (2, 2, 20),

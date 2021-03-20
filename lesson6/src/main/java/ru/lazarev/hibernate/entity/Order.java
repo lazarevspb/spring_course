@@ -60,5 +60,4 @@ public class Order {
     public String toString() {
         return String.format("id: %s, product_id: %s, customer_id: %s, cost: %s", id, product.getName(), customer.getName(), cost);
     }
-
 }

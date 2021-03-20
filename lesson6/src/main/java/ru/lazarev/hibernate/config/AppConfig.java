@@ -30,5 +30,4 @@ public class AppConfig {
     public Service service() {
         return new Service();
     }
-
 }

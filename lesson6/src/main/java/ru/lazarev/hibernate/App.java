@@ -2,11 +2,10 @@ package ru.lazarev.hibernate;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ru.lazarev.hibernate.config.AppConfig;
 import ru.lazarev.hibernate.service.Service;
 
 /**
- * Homework for lesson #7
+ * Homework for lesson #6
  *
  * @author Valeriy Lazarev
  * @since 20.03.2021

@@ -11,14 +11,12 @@ import javax.transaction.Transactional;
 
 @Component("service")
 public class Service {
-
     @Autowired
     private CustomerDAO customerDAO;
     @Autowired
     private OrderDAO orderDAO;
     @Autowired
     private ProductDAO productDAO;
-
 
     @Transactional
     public String customerInfo(Long orderId) {
@@ -34,6 +32,4 @@ public class Service {
     public String productInfo(Long orderId) {
         return productDAO.findById(orderId).toString();
     }
-
-
 }

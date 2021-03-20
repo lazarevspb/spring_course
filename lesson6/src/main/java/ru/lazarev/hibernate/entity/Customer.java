@@ -51,6 +51,4 @@ public class Customer {
   public String toString() {
     return String.format("id: %s, name: %s, orders_id: %s", id, name, orders);
   }
-
-
 }
