@@ -1,8 +1,6 @@
 package ru.lazarev.hibernate.entity;
 
-
 import javax.persistence.*;
-
 
 @Entity
 @Table(name = "products", schema = "hibernate")

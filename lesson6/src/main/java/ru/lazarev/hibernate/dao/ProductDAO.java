@@ -1,43 +1,40 @@
 package ru.lazarev.hibernate.dao;
 
 import org.hibernate.Session;
-import ru.lazarev.hibernate.emf.EMF;
+import org.springframework.stereotype.Component;
 import ru.lazarev.hibernate.entity.Product;
 
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
-public class ProductDao {
-    Session session = EMF.getCurrentSession();
+@Component("productDao")
+public class ProductDAO {
+    Session session = null;
 
+    @Transactional
     public Product findById(Long id) {
-        session.beginTransaction();
         Query query = session.createQuery("SELECT p FROM Product p WHERE p.id = :id");
         query.setParameter("id", id);
         Product product = (Product) query.getSingleResult();
-        session.getTransaction().commit();
         return product;
     }
 
+    @Transactional
     public void saveOrUpdate(Product product) {
-        session.beginTransaction();
         session.saveOrUpdate(product);
-        session.getTransaction().commit();
     }
 
+    @Transactional
     public void deleteById(Long id) {
-        session.beginTransaction();
         Product product = session.get(Product.class, id);
         session.delete(product);
-        session.getTransaction().commit();
     }
 
+    @Transactional
     public List<Product> findAll() {
-        session.beginTransaction();
         List<Product> list = session.createQuery("from Product", Product.class).getResultList();
-        session.getTransaction().commit();
         return list;
     }
 }

@@ -1,43 +1,40 @@
 package ru.lazarev.hibernate.dao;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Component;
 import ru.lazarev.hibernate.emf.EMF;
 import ru.lazarev.hibernate.entity.Customer;
-import ru.lazarev.hibernate.entity.Product;
 
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Component("customerDAO")
 public class CustomerDAO {
-    Session session = EMF.getCurrentSession();
+    Session session = EMF.getOpenSession();
 
+    @Transactional
     public Customer findById(Long id) {
-        session.beginTransaction();
         Query query = session.createQuery("SELECT c FROM Customer c WHERE c.id = :id");
         query.setParameter("id", id);
         Customer customer = (Customer) query.getSingleResult();
-        session.getTransaction().commit();
         return customer;
     }
 
+    @Transactional
     public void saveOrUpdate(Customer customer) {
-        session.beginTransaction();
         session.saveOrUpdate(customer);
-        session.getTransaction().commit();
     }
 
+    @Transactional
     public void deleteById(Long id) {
-        session.beginTransaction();
         Customer customer = session.get(Customer.class, id);
         session.delete(customer);
-        session.getTransaction().commit();
     }
 
-
+    @Transactional
     public List<Customer> findAll() {
-        session.beginTransaction();
         List<Customer> list = session.createQuery("FROM Customer", Customer.class).getResultList();
-        session.getTransaction().commit();
         return list;
     }
 }

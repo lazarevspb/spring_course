@@ -1,20 +1,20 @@
 package ru.lazarev.hibernate;
 
-import org.hibernate.Session;
-import ru.lazarev.hibernate.emf.EMF;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.lazarev.hibernate.service.Service;
 
+/**
+ * Homework for lesson #7
+ *
+ * @author Valeriy Lazarev
+ * @since 20.03.2021
+ */
 public class App {
-    private static final Session session = EMF.getCurrentSession();
-    private static final Service service = new Service();
-
     public static void main(String[] args) {
-
-        try {
-            System.out.println(service.orderInfo(2L));
-            System.out.println(service.customerInfo(2L));
-        } finally {
-            session.close();
-        }
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        Service service = context.getBean("service", Service.class);
+        System.out.println(service.orderInfo(2L));
+        System.out.println(service.customerInfo(2L));
     }
 }
