@@ -12,7 +12,9 @@ public class EMF {
             .buildSessionFactory();
 
     public static Session getOpenSession() {
+
         return factory.openSession();
+
     }
 
     public static void close() {

@@ -2,6 +2,7 @@ package ru.lazarev.hibernate;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ru.lazarev.hibernate.emf.EMF;
 import ru.lazarev.hibernate.service.Service;
 
 /**
@@ -16,5 +17,6 @@ public class App {
         Service service = context.getBean("service", Service.class);
         System.out.println(service.orderInfo(2L));
         System.out.println(service.customerInfo(2L));
+        EMF.close();
     }
 }
