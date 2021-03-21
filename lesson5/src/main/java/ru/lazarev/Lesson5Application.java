@@ -1,9 +1,7 @@
 package ru.lazarev;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import ru.lazarev.DAO.ProductDao;
+import ru.lazarev.emf.EMF;
 import ru.lazarev.entity.Product;
 
 import javax.persistence.EntityManager;
@@ -15,40 +13,22 @@ import javax.persistence.EntityManager;
  * @since 13.03.2021
  */
 public class Lesson5Application {
-    private static SessionFactory factory;
-    private static Session session;
-
     public static void main(String[] args) {
         ProductDao dao = new ProductDao();
         try {
-            init();
-            session = factory.getCurrentSession();
 //            Product p = generateProduct();
 //            dao.saveOrUpdate(session, p);
 //            System.out.println(dao.findById(session, 2L));
 //            dao.deleteById(session, 1L);
-            dao.findAll(session).forEach(System.out::println);
+            dao.findAll().forEach(System.out::println);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            shutdown();
+            EMF.close();
         }
     }
 
-    public static void shutdown() {
-        if (session != null) {
-            session.close();
-        }
-        factory.close();
-    }
-
-    private static void init() {
-        factory = new Configuration()
-                .configure("hibernate.xml")
-                .buildSessionFactory();
-    }
-
-    private static void newProduct(EntityManager em) {
+    private static void fillingTheBaseWithProducts(EntityManager em) {
         int minPrice = 0;
         int maxPrice = 1000;
         int productCount = 5;
