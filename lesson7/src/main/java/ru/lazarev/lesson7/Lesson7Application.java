@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Homework for lesson #7
  *
- * @author willie
+ * @author Valeriy Lazarev
  * @since 21.03.2021
  */
 @SpringBootApplication
