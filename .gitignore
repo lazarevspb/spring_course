@@ -1,9 +1,9 @@
 /spring_course.iml
 /target/
-/firstapp.iml
 .idea/
 *.iml
 target/
+
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -43,4 +43,7 @@ build/
 /lesson4/.mvn/wrapper/
 /lesson4/.mvn/
 *.uml
+
+=======
+/lesson3/qq/*
 
