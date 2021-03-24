@@ -4,8 +4,6 @@
 .idea/
 *.iml
 target/
-/my_folder/
-
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -45,7 +43,4 @@ build/
 /lesson4/.mvn/wrapper/
 /lesson4/.mvn/
 *.uml
-
-=======
-/lesson3/qq/*
 
