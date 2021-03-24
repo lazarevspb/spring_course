@@ -1,0 +1,46 @@
+/spring_course.iml
+/target/
+/firstapp.iml
+.idea/
+*.iml
+target/
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+/spring-boot-project.zip
+/lesson3.rar
+/lesson2/lesson2.uml
+/lesson4/.mvn/wrapper/
+/lesson4/.mvn/
+*.uml
+
