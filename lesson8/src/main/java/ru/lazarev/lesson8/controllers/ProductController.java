@@ -17,10 +17,10 @@ public class ProductController {
     public List<Product> findAllProducts(
             @RequestParam(name = "min_price", defaultValue = "0") Integer minPrice,
             @RequestParam(name = "max_price", required = false) Integer maxPrice
-            ) {
-            if (maxPrice == null){
-                maxPrice = Integer.MAX_VALUE;
-            }
+    ) {
+        if (maxPrice == null) {
+            maxPrice = Integer.MAX_VALUE;
+        }
         return services.findAllByPrice(minPrice, maxPrice);
     }
 
@@ -39,6 +39,4 @@ public class ProductController {
     public void deleteProductById(@PathVariable Long id) {
         services.deleteProductById(id);
     }
-
-
 }
