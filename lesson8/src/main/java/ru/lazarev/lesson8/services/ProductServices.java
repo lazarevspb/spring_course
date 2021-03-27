@@ -30,4 +30,8 @@ public class ProductServices {
     public Product saveOrUpdate(Product product) {
         return repository.save(product);
     }
+
+    public void deleteProductById(Long id) {
+        repository.deleteById(id);
+    }
 }
