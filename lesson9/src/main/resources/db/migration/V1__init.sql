@@ -19,4 +19,15 @@ values ('Product_1', 10),
        ('Product_8', 80),
        ('Product_9', 90),
        ('Product_10', 100),
-       ('Product_11', 110);
+       ('Product_11', 110),
+       ('Product_12', 120),
+       ('Product_13', 130),
+       ('Product_14', 140),
+       ('Product_15', 150),
+       ('Product_16', 160),
+       ('Product_17', 170),
+       ('Product_18', 180),
+       ('Product_19', 190),
+       ('Product_20', 200),
+       ('Product_21', 210)
+;

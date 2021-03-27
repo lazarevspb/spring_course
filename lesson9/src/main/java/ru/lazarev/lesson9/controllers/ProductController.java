@@ -10,28 +10,23 @@ import ru.lazarev.lesson9.model.Product;
 import ru.lazarev.lesson9.repositories.specifications.ProductSpecifications;
 import ru.lazarev.lesson9.services.ProductServices;
 
-import java.util.List;
 
-//@RequestMapping("/products")
 @RestController
 @RequestMapping("/api/v1/products")
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductServices services;
 
-    //`http://localhost:8189/market/api/v1/index.html`
+    //`http://localhost:8189/market/index.html`
     @GetMapping
     public Page<ProductDto> findAllProducts(
-//            @RequestParam(name = "min_price", defaultValue = "0") Integer minPrice,
-//            @RequestParam(name = "max_price", required = false) Integer maxPrice,
-//            @RequestParam(name = "title", required = false) String title,
             @RequestParam MultiValueMap<String, String> params,
             @RequestParam(name = "p", defaultValue = "1") Integer page
     ) {
         if (page < 1) {
             page = 1;
         }
-        return services.findAll(ProductSpecifications.build(params), page, 2);
+        return services.findAll(ProductSpecifications.build(params), page, 5);
     }
 
     @GetMapping("/{id}")
