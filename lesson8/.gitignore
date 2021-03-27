@@ -1,16 +1,6 @@
-/spring_course.iml
-/target/
-/firstapp.iml
-.idea/
-*.iml
-target/
-/my_folder/
-mvnw
-mvnw.cmd
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
-*.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -41,14 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-/spring-boot-project.zip
-/lesson3.rar
-/lesson2/lesson2.uml
-/lesson4/.mvn/wrapper/
-/lesson4/.mvn/
-*.uml
-
-=======
-/lesson3/qq/*
-
-/lesson8/.mvn/
