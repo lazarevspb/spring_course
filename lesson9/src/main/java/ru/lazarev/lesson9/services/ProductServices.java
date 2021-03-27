@@ -1,7 +1,11 @@
 package ru.lazarev.lesson9.services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import ru.lazarev.lesson9.dto.ProductDto;
 import ru.lazarev.lesson9.model.Product;
 import ru.lazarev.lesson9.repositories.ProductRepository;
 
@@ -19,6 +23,10 @@ public class ProductServices {
 
     public List<Product> findAllProduct() {
         return repository.findAll();
+    }
+
+    public Page<ProductDto> findAll(Specification<Product> spec, int page, int pageSize) {
+        return repository.findAll(spec, PageRequest.of(page - 1, pageSize)).map(ProductDto::new);
     }
 
     public List<Product> findAllByPrice(Integer min, Integer max) {
