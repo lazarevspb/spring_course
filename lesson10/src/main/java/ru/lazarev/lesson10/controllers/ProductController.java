@@ -26,6 +26,10 @@ public class ProductController {
         if (page < 1) {
             page = 1;
         }
+
+
+
+
         return services.findAll(ProductSpecifications.build(params), page, 5);
     }
 

@@ -29,9 +29,9 @@ public class ProductServices {
         return repository.findAll(spec, PageRequest.of(page - 1, pageSize)).map(ProductDto::new);
     }
 
-    public List<Product> findAllByPrice(Integer min, Integer max) {
-        return repository.findAllByPriceBetween(min, max);
-    }
+//    public List<Product> findAllByPrice(Integer min, Integer max) {
+//        return repository.findAllByPriceBetween(min, max);
+//    }
 
     public Product saveOrUpdate(Product product) {
         return repository.save(product);
