@@ -1,6 +1,7 @@
 package ru.lazarev.lesson10.controllers;
 
 
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ public class ProductController {
     private final ProductServices services;
 
     //`http://localhost:8190/market/index.html`
+    @ApiOperation(value = "receive all products")
     @GetMapping
     public Page<ProductDto> findAllProducts(
             @RequestParam MultiValueMap<String, String> params,
@@ -33,13 +35,14 @@ public class ProductController {
         return services.findAll(ProductSpecifications.build(params), page, 5);
     }
 
+    @ApiOperation(value = "receive the product by ID")
     @GetMapping("/{id}")
     public ProductDto findById(@PathVariable Long id) {
     return services.findProductById(id)
             .orElseThrow(() -> new ResourceNotFoundException(String
                     .format("id %s not found", id)));
     }
-
+    @ApiOperation(value = "Saving the product")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Product saveNewProduct(@RequestBody Product product) {
@@ -47,11 +50,12 @@ public class ProductController {
         return services.saveOrUpdate(product);
     }
 
+    @ApiOperation(value = "Updating the product")
     @PutMapping
     public Product updateProduct(@RequestBody Product product) {
         return services.saveOrUpdate(product);
     }
-
+    @ApiOperation(value = "Remove product by ID")
     @DeleteMapping("/{id}")
     public void deleteProductById(@PathVariable Long id) {
         services.deleteProductById(id);
