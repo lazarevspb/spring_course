@@ -30,12 +30,12 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
         }).then(function (response) {
             $scope.ProductsPage = response.data;
 
-            let minPageIndex = pageIndex - 2;
+            let minPageIndex = pageIndex - 1;
             if (minPageIndex < 1) {
                 minPageIndex = 1;
             }
 
-            let maxPageIndex = pageIndex + 2;
+            let maxPageIndex = pageIndex + 1;
             if (maxPageIndex > $scope.ProductsPage.totalPages) {
                 maxPageIndex = $scope.ProductsPage.totalPages;
             }
