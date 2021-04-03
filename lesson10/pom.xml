@@ -10,8 +10,8 @@
 	</parent>
 	<groupId>ru.lazarev</groupId>
 	<artifactId>lesson10</artifactId>
+	<name>lesson10</name>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>lesson9</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
@@ -38,6 +38,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
 		<dependency>

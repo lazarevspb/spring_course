@@ -1,23 +1,25 @@
 package ru.lazarev.lesson10.controllers;
 
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import ru.lazarev.lesson10.dto.ProductDto;
+import ru.lazarev.lesson10.exceprion_handling.ResourceNotFoundException;
 import ru.lazarev.lesson10.model.Product;
 import ru.lazarev.lesson10.repositories.specifications.ProductSpecifications;
 import ru.lazarev.lesson10.services.ProductServices;
 
 
 @RestController
-@RequestMapping("/api/v1/products")
+@RequestMapping("/api/v2/products")
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductServices services;
 
-    //`http://localhost:8189/market/index.html`
+    //`http://localhost:8190/market/index.html`
     @GetMapping
     public Page<ProductDto> findAllProducts(
             @RequestParam MultiValueMap<String, String> params,
@@ -27,15 +29,15 @@ public class ProductController {
             page = 1;
         }
 
-
-
-
+        //http://localhost:8190/market/api/v2/products/
         return services.findAll(ProductSpecifications.build(params), page, 5);
     }
 
     @GetMapping("/{id}")
-    public Product findById(@PathVariable Long id) {
-        return services.findProductById(id).get();
+    public ProductDto findById(@PathVariable Long id) {
+    return services.findProductById(id)
+            .orElseThrow(() -> new ResourceNotFoundException(String
+                    .format("id %s not found", id)));
     }
 
     @PostMapping
