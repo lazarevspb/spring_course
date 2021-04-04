@@ -12,18 +12,21 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "users_table")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", length = 128)
+    @Column(name = "username", length = 50)
     private String name;
 
-    @Column(name = "surname", length = 128)
+    @Column(name = "password", length = 100)
     private String surname;
+
+    @Column(name = "enabled")
+    private boolean enabled;
 
     @Column(name = "created_at")
     @CreationTimestamp
