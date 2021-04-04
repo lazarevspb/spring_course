@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html ng-app="app">
+<html ng-app="app" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
@@ -16,6 +16,11 @@
 
 <div class="container" ng-controller="indexController">
     <h1>Market L11</h1>
+
+    <div sec:authorize="isAuthenticated()">
+        This content will only be visible to ADMIN users.
+    </div>
+
     <h3>Фильтр</h3>
     <form novalidate ng-submit="fillTable()">
         <div class="form-group row">
