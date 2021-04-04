@@ -1,6 +1,7 @@
 package ru.lazarev.lesson11.beans;
 
 
+
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

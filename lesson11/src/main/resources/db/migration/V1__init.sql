@@ -31,3 +31,37 @@ values ('Product_1', 10),
        ('Product_20', 200),
        ('Product_21', 210)
 ;
+
+create table users_table
+(
+    id         bigserial primary key,
+    name       varchar(128),
+    surname    varchar(128),
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp
+
+
+);
+insert into users_table(name, surname)
+values ('UserName_1 ', 'UserSureName_1 '),
+       ('UserName_2 ', 'UserSureName_2 '),
+       ('UserName_3 ', 'UserSureName_3 '),
+       ('UserName_4 ', 'UserSureName_4 '),
+       ('UserName_5 ', 'UserSureName_5 '),
+       ('UserName_6 ', 'UserSureName_6 '),
+       ('UserName_7 ', 'UserSureName_7 '),
+       ('UserName_8 ', 'UserSureName_8 '),
+       ('UserName_9 ', 'UserSureName_9 '),
+       ('UserName_10', 'UserSureName_10'),
+       ('UserName_11', 'UserSureName_11'),
+       ('UserName_12', 'UserSureName_12'),
+       ('UserName_13', 'UserSureName_13'),
+       ('UserName_14', 'UserSureName_14'),
+       ('UserName_15', 'UserSureName_15'),
+       ('UserName_16', 'UserSureName_16'),
+       ('UserName_17', 'UserSureName_17'),
+       ('UserName_18', 'UserSureName_18'),
+       ('UserName_19', 'UserSureName_19'),
+       ('UserName_20', 'UserSureName_20'),
+       ('UserName_21', 'UserSureName_21')
+;

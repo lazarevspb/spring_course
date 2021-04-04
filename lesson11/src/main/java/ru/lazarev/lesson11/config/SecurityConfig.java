@@ -1,0 +1,104 @@
+package ru.lazarev.lesson11.config;
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
+@Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class.getName());
+
+
+    @Bean
+    public UserDetailsService users() {
+        UserDetails user = User.builder()
+                .username("user")
+                .password("{bcrypt}$2y$12$FY4epAuELMAKfzVdTBFjcOJ0PUaBDxjGOF3wQWEuZ7YcG57AE2g76")
+                .roles("USER")
+                .build();
+        UserDetails admin = User.builder()
+                .username("admin")
+                .password("{bcrypt}$2y$12$FY4epAuELMAKfzVdTBFjcOJ0PUaBDxjGOF3wQWEuZ7YcG57AE2g76")
+                .roles("USER", "ADMIN")
+                .build();
+        return new InMemoryUserDetailsManager(user, admin);
+    }
+
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        logger.info("In-Memory Security Configuration");
+        http.authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/h2/**").authenticated()
+                .antMatchers("/users.html/**").authenticated()
+                .and()
+                .formLogin()
+        ;
+
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
+    }
+
+
+
+
+
+}
+
+
+
+//
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Profile;
+//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+//import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+//import org.springframework.security.core.userdetails.User;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+//
+//@EnableWebSecurity
+//@Profile("main")
+//public class SecurityConfig extends WebSecurityConfigurerAdapter {
+//    private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class.getName());
+//
+//    @Bean
+//    public UserDetailsService users() {
+//        UserDetails user = User.builder()
+//                .username("user")
+//                .password("{bcrypt}$2y$12$FY4epAuELMAKfzVdTBFjcOJ0PUaBDxjGOF3wQWEuZ7YcG57AE2g76")
+//                .roles("USER")
+//                .build();
+//        UserDetails admin = User.builder()
+//                .username("admin")
+//                .password("{bcrypt}$2y$12$FY4epAuELMAKfzVdTBFjcOJ0PUaBDxjGOF3wQWEuZ7YcG57AE2g76")
+//                .roles("USER", "ADMIN")
+//                .build();
+//        return new InMemoryUserDetailsManager(user, admin);
+//    }
+//
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        logger.info("In-Memory Security Configuration");
+//        http.authorizeRequests()
+////                .antMatchers("market/h2-console/**").permitAll()
+////                .antMatchers("/auth_page/**").authenticated()
+////                .antMatchers("/admin/**").hasAnyRole("ADMIN", "SUPERADMIN")
+//                .anyRequest().permitAll()
+////                .and()
+////                .formLogin()
+//        ;
+//    }
+//}

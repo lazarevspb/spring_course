@@ -16,6 +16,10 @@ public class Lesson11Application {
     }
 }
 /*
+        http://localhost:8190/market/h2-console/
+
+        http://localhost:8190/market/users.html
+
         http://localhost:8190/market/index.html
         http://localhost:8190/market/api/v2/products/
 
