@@ -16,7 +16,7 @@ public class Lesson11Application {
     }
 }
 /*
-        http://localhost:8190/market/h2-console/
+//        http://localhost:8190/market/h2-console/
 
         http://localhost:8190/market/users.html
 
