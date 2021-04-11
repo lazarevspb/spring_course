@@ -54,6 +54,15 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
         }
         return arr;
     }
+
+    $scope.clearCart = function () {
+        $http.get(contextPath + '/cart/clear')
+            .then(function (response) {
+                $scope.showCart();
+            });
+    }
+
+
     $scope.fillTable();
     $scope.showCart();
 });

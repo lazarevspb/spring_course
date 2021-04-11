@@ -52,11 +52,11 @@ public class Cart {
 
     public void removeProductFromCart(Long id) {
         Product p = services.findProductById(id).get();
-//        items.computeIfPresent(p, (product, integer) -> --integer);
     }
 
     public void clear() {
         items.clear();
+        reCount();
     }
 
     public void reCount() {
